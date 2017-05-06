@@ -21,10 +21,14 @@ def createCSV():
         csvFile.close()
 
 def addData(data):
+    # adds a data line to an existing csv file
     with open(filename, 'a') as csvFile:
         write = csv.writer(csvFile, delimiter=',')
         write.writerows(data)
         csvFile.close()
+
+def checkFileName():
+
 
 createCSV()
 addData(dummyData)

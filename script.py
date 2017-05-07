@@ -1,7 +1,7 @@
 # step 1: create a .csv file with the date as the filename
 # step 2: log the activity your currently doing
 # step 3: write it to the .csv file with a timestamp
-
+import os, inspect
 import time
 from datetime import datetime as dt
 import csv
@@ -10,6 +10,12 @@ thisYear = dt.now().year
 thisMonth = dt.now().month
 thisDay = dt.now().day
 filename = str(thisYear)+"-"+str(thisMonth)+"-"+str(thisDay)+".csv"
+currentFilePath = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+currentfileName = inspect.getfile(inspect.currentframe())
+
+print (currentFilePath)
+print (currentfileName)
+
 dummyData = [['meme file','13:15'],['another name', '14:33']]
 
 def createCSV():
@@ -28,9 +34,17 @@ def addData(data):
         csvFile.close()
 
 def checkFileName():
+    # checks if the filesArray have today's datetime
+    # if it does, then addData otherwise createCSV
+    filesArray = os.listdir()
+    if filename in filesArray:
+        print('file already exists')
+        return addData(dummyData)
+    else:
+        print('new file')
+        return createCSV()
+
+# def gatherData():
 
 
-createCSV()
-addData(dummyData)
-
-print (filename)
+checkFileName()

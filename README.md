@@ -32,4 +32,5 @@ This is an app to log activity on your pc
 * Permission to dereference or read (readlink(2)) this symbolic link is governed by a ptrace access mode PTRACE_MODE_READ_FSCREDS check; see ptrace(2).
 ### Related articles
 * http://stackoverflow.com/questions/115868/how-do-i-get-the-title-of-the-current-active-window-using-c
-* 
+* http://stackoverflow.com/questions/608809/getting-the-name-of-the-active-window
+

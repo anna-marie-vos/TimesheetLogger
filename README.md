@@ -16,3 +16,14 @@ This is an app to log activity on your pc
 * if nothing's logged: AFK; timestamp
 
 ### Learning
+* install psutil to crossplatform data: sudo pip3 install psutil
+
+* /proc/[pid]/cwd
+* This is a symbolic link to the current working directory of the process.
+* To find out the current working directory of process 20, for instance, you can do this:
+* $ cd /proc/20/cwd; /bin/pwd
+*
+* Note that the pwd command is often a shell built-in, and might not work properly.  
+* In bash(1), you may use pwd -P.
+* * In a multithreaded process, the contents of this symbolic link are not available if the main thread has already terminated (typically by calling pthread_exit(3)).
+* Permission to dereference or read (readlink(2)) this symbolic link is governed by a ptrace access mode PTRACE_MODE_READ_FSCREDS check; see ptrace(2).

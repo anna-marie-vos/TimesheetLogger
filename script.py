@@ -1,6 +1,7 @@
 # step 1: create a .csv file with the date as the filename
 # step 2: log the activity your currently doing
 # step 3: write it to the .csv file with a timestamp
+# Snag 1: find the filename of the file currrently being edited.
 import os, inspect
 import time
 from datetime import datetime as dt
@@ -17,7 +18,9 @@ def createData():
     thisMinute = dt.now().minute
     thisSeconds = dt.now().second
     currentTimeInstance = str(thisHour)+":"+str(thisMinute)+":"+str(thisSeconds)
-    currentFilePath = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+    currentFilePath = os.getcwd()
+    print(currentFilePath)
+    # currentFilePath = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
     currentfileName = inspect.getfile(inspect.currentframe())
     currentLog = currentFilePath+"/"+currentfileName
     dataStamp = [[currentLog,currentTimeInstance]]

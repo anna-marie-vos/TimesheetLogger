@@ -33,4 +33,4 @@ This is an app to log activity on your pc
 ### Related articles
 * http://stackoverflow.com/questions/115868/how-do-i-get-the-title-of-the-current-active-window-using-c
 * http://stackoverflow.com/questions/608809/getting-the-name-of-the-active-window
-
+* https://superuser.com/questions/382616/detecting-currently-active-window

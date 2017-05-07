@@ -18,18 +18,18 @@ This is an app to log activity on your pc
 ### Learning
 * install psutil to crossplatform data: sudo pip3 install psutil
 * install pynput to monitor control mouse and keyboard
-
 * terminal commands that show the current files memories being used:
 * top
 * ps
 * ps aux
-*
 * /proc/[pid]/cwd
 * This is a symbolic link to the current working directory of the process.
 * To find out the current working directory of process 20, for instance, you can do this:
 * $ cd /proc/20/cwd; /bin/pwd
-*
 * Note that the pwd command is often a shell built-in, and might not work properly.  
 * In bash(1), you may use pwd -P.
-* * In a multithreaded process, the contents of this symbolic link are not available if the main thread has already terminated (typically by calling pthread_exit(3)).
+* In a multithreaded process, the contents of this symbolic link are not available if the main thread has already terminated (typically by calling pthread_exit(3)).
 * Permission to dereference or read (readlink(2)) this symbolic link is governed by a ptrace access mode PTRACE_MODE_READ_FSCREDS check; see ptrace(2).
+### Related articles
+* http://stackoverflow.com/questions/115868/how-do-i-get-the-title-of-the-current-active-window-using-c
+* 

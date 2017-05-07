@@ -9,36 +9,33 @@ import csv
 thisYear = dt.now().year
 thisMonth = dt.now().month
 thisDay = dt.now().day
-thisHour = dt.now().hour
-thisMinute = dt.now().minute
-thisSeconds = dt.now().second
 
-currentTimeInstance = str(thisHour)+":"+str(thisMinute)+":"+str(thisSeconds)
 filename = str(thisYear)+"-"+str(thisMonth)+"-"+str(thisDay)+".csv"
 
-print(currentTimeInstance)
+def createData():
+    thisHour = dt.now().hour
+    thisMinute = dt.now().minute
+    thisSeconds = dt.now().second
+    currentTimeInstance = str(thisHour)+":"+str(thisMinute)+":"+str(thisSeconds)
+    currentFilePath = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+    currentfileName = inspect.getfile(inspect.currentframe())
+    currentLog = currentFilePath+"/"+currentfileName
+    dataStamp = [[currentLog,currentTimeInstance]]
+    return dataStamp
 
-currentFilePath = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-currentfileName = inspect.getfile(inspect.currentframe())
-currentLog = currentFilePath+"/"+currentfileName
-
-print (currentLog)
-
-dataStamp = [[currentLog,currentTimeInstance]]
 
 def createCSV():
     # creates a .csv file with the year-month-date.csv
     with open(filename, 'w', newline='') as csvFile:
         write = csv.writer(csvFile, delimiter=',')
-        data = [['hello','hello2'],[123,12345]]
-        write.writerows(data)
+        write.writerows(createData())
         csvFile.close()
 
-def addData(data):
+def addData():
     # adds a data line to an existing csv file
     with open(filename, 'a') as csvFile:
         write = csv.writer(csvFile, delimiter=',')
-        write.writerows(data)
+        write.writerows(createData())
         csvFile.close()
 
 def checkFileName():
@@ -47,7 +44,7 @@ def checkFileName():
     filesArray = os.listdir()
     if filename in filesArray:
         print('file already exists')
-        return addData(dataStamp)
+        return addData()
     else:
         print('new file')
         return createCSV()

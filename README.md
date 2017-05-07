@@ -17,7 +17,13 @@ This is an app to log activity on your pc
 
 ### Learning
 * install psutil to crossplatform data: sudo pip3 install psutil
+* install pynput to monitor control mouse and keyboard
 
+* terminal commands that show the current files memories being used:
+* top
+* ps
+* ps aux
+*
 * /proc/[pid]/cwd
 * This is a symbolic link to the current working directory of the process.
 * To find out the current working directory of process 20, for instance, you can do this:

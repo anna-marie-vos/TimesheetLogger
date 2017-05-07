@@ -13,10 +13,10 @@ thisHour = dt.now().hour
 thisMinute = dt.now().minute
 thisSeconds = dt.now().second
 
-thisTimeInstance = str(thisHour)+":"+str(thisMinute)+":"+str(thisSeconds)
+currentTimeInstance = str(thisHour)+":"+str(thisMinute)+":"+str(thisSeconds)
 filename = str(thisYear)+"-"+str(thisMonth)+"-"+str(thisDay)+".csv"
 
-print(thisTimeInstance)
+print(currentTimeInstance)
 
 currentFilePath = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 currentfileName = inspect.getfile(inspect.currentframe())
@@ -24,7 +24,7 @@ currentLog = currentFilePath+"/"+currentfileName
 
 print (currentLog)
 
-dummyData = [['meme file','13:15'],['another name', '14:33']]
+dataStamp = [[currentLog,currentTimeInstance]]
 
 def createCSV():
     # creates a .csv file with the year-month-date.csv
@@ -47,12 +47,11 @@ def checkFileName():
     filesArray = os.listdir()
     if filename in filesArray:
         print('file already exists')
-        return addData(dummyData)
+        return addData(dataStamp)
     else:
         print('new file')
         return createCSV()
 
-# def gatherData():
-
-
-# checkFileName()
+while True:
+    checkFileName()
+    time.sleep(5)

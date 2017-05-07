@@ -9,12 +9,20 @@ import csv
 thisYear = dt.now().year
 thisMonth = dt.now().month
 thisDay = dt.now().day
+thisHour = dt.now().hour
+thisMinute = dt.now().minute
+thisSeconds = dt.now().second
+
+thisTimeInstance = str(thisHour)+":"+str(thisMinute)+":"+str(thisSeconds)
 filename = str(thisYear)+"-"+str(thisMonth)+"-"+str(thisDay)+".csv"
+
+print(thisTimeInstance)
+
 currentFilePath = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 currentfileName = inspect.getfile(inspect.currentframe())
+currentLog = currentFilePath+"/"+currentfileName
 
-print (currentFilePath)
-print (currentfileName)
+print (currentLog)
 
 dummyData = [['meme file','13:15'],['another name', '14:33']]
 
@@ -47,4 +55,4 @@ def checkFileName():
 # def gatherData():
 
 
-checkFileName()
+# checkFileName()

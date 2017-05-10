@@ -36,3 +36,4 @@ This is an app to log activity on your pc
 * http://stackoverflow.com/questions/608809/getting-the-name-of-the-active-window
 * https://superuser.com/questions/382616/detecting-currently-active-window
 * http://stackoverflow.com/questions/10266281/obtain-active-window-using-python
+* https://developer.gnome.org/libwnck/stable/WnckWindow.html

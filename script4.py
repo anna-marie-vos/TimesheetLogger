@@ -37,6 +37,7 @@ def get_active_window():
                 pid = window.get_pid()
                 with open("/proc/{pid}/cmdline".format(pid=pid)) as f:
                     active_window_name = f.read()
+                    print(active_window_name)
         else:
             try:
                 gi.require_version('Gtk', '3.0')

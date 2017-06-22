@@ -9,16 +9,18 @@ actual_platform = sys.platform
 screen = wnck.screen_get_default()
 
 # screen.force_update()
+activeWindow = screen.get_previously_active_window()
 
-print(actual_platform)
-print(screen)
+print('actual platform',actual_platform)
+print('screen',screen)
+print('activeWindow',activeWindow)
 
-pygtk.require('2.0')
-
-print(pygtk)
-
+# pygtk.require('2.0')
+#
+# print(pygtk)
+#
 while gtk.events_pending():
     gtk.main_iteration()
-
-windows = screen.get_windows()
-print (windows)
+#
+# windows = screen.get_windows()
+# print (windows)

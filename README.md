@@ -37,3 +37,11 @@ This is an app to log activity on your pc
 * https://superuser.com/questions/382616/detecting-currently-active-window
 * http://stackoverflow.com/questions/10266281/obtain-active-window-using-python
 * https://developer.gnome.org/libwnck/stable/WnckWindow.html
+
+## Selenium is another webwindow library
+* https://stackoverflow.com/questions/10629815/handle-multiple-window-in-python
+* https://stackoverflow.com/questions/4746688/detecting-active-windows-in-python-with-kde
+* https://stackoverflow.com/questions/38529064/how-can-i-bring-a-window-to-the-foreground-using-win32gui-in-python-even-if-the
+* https://stackoverflow.com/questions/35684815/how-to-get-application-name-and-version-relating-to-the-foreground-window-in-pyt
+* https://lazka.github.io/pgi-docs/Wnck-3.0/classes/Screen.html
+* install: `sudo apt-get install libwnck-3-* gir1.2-wnck-3.0`

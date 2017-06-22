@@ -45,3 +45,7 @@ This is an app to log activity on your pc
 * https://stackoverflow.com/questions/35684815/how-to-get-application-name-and-version-relating-to-the-foreground-window-in-pyt
 * https://lazka.github.io/pgi-docs/Wnck-3.0/classes/Screen.html
 * install: `sudo apt-get install libwnck-3-* gir1.2-wnck-3.0`
+
+# this worked:
+* https://gist.github.com/nthrnth/f77465b56fb21dbd3698ea493822dab7
+* https://unix.stackexchange.com/questions/159334/focusing-the-current-window-minimizing-all-of-the-others

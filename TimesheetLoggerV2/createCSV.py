@@ -18,30 +18,28 @@ def getTimeStamp():
     currentTimeInstance = str(thisHour)+":"+str(thisMinute)+":"+str(thisSeconds)
     return currentTimeInstance
 
-
 def createCSVFile():
     '''creates a .csv file with
     year-month-date.csv'''
     with open(filename, 'wb') as csvFile:
         write = csv.writer(csvFile, delimiter=",")
-        write.writerow([getTimeStamp(),getWindowFile()])
+        write.writerow([getTimeStamp(),getActiveFile()])
         csvFile.close()
 
 def addData():
     # adds a data line to an existing csv file
-    with open(filename, 'a') as csvFile:
+    with open(filename, 'a+') as csvFile:
         write = csv.writer(csvFile, delimiter=',')
-        write.writerows([getTimeStamp(),getWindowFile() ])
+        write.writerows([[getTimeStamp(),getActiveFile()]])
         csvFile.close()
 
-def getWindowFile():
+def getActiveFile():
     if sys.platform in ['linux', 'linux2']:
         return CurrentWindow.activeLinuxWindow()
-
     elif sys.platform in ['Windows', 'win32', 'cygwin']:
         return CurrentWindow.activeWindowsWindow()
 
 
 getTimeStamp()
 addData()
-createCSVFile()
+# createCSVFile()

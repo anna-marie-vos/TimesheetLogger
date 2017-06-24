@@ -12,6 +12,7 @@ thisDay = dt.now().day
 filename = str(thisYear)+"-"+str(thisMonth)+"-"+str(thisDay)+".csv"
 
 def getTimeStamp():
+    '''getTimeStamp returns the hh:mm:ss'''
     thisHour = dt.now().hour
     thisMinute = dt.now().minute
     thisSeconds = dt.now().second
@@ -27,19 +28,32 @@ def createCSVFile():
         csvFile.close()
 
 def addData():
-    # adds a data line to an existing csv file
+    '''adds a data line to an existing csv file'''
     with open(filename, 'a+') as csvFile:
         write = csv.writer(csvFile, delimiter=',')
         write.writerows([[getTimeStamp(),getActiveFile()]])
         csvFile.close()
 
 def getActiveFile():
+    '''check if your on linux
+    or windows and returns the active window name'''
     if sys.platform in ['linux', 'linux2']:
         return CurrentWindow.activeLinuxWindow()
     elif sys.platform in ['Windows', 'win32', 'cygwin']:
         return CurrentWindow.activeWindowsWindow()
 
+def checkIfCsvExist():
+    ''' checks if the filesArray have today's datetime
+     if it does, then addData otherwise createCSV'''
+    filesArray = os.listdir('./')
+    if filename in filesArray:
+        return addData()
+    else:
+        return createCSVFile()
 
-getTimeStamp()
-addData()
-# createCSVFile()
+def timeloop():
+    while True:
+        checkIfCsvExist()
+        time.sleep(5)
+
+timeloop()

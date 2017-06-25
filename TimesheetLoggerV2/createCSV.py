@@ -31,16 +31,16 @@ def addData():
     '''adds a data line to an existing csv file'''
     with open(filename, 'a+') as csvFile:
         write = csv.writer(csvFile, delimiter=',')
-        write.writerows([[getTimeStamp(),getActiveFile()]])
+        write.writerows([[getTimeStamp(),CurrentWindow.activeLinuxWindow()]])
         csvFile.close()
 
-def getActiveFile():
-    '''check if your on linux
-    or windows and returns the active window name'''
-    if sys.platform in ['linux', 'linux2']:
-        return CurrentWindow.activeLinuxWindow()
-    elif sys.platform in ['Windows', 'win32', 'cygwin']:
-        return CurrentWindow.activeWindowsWindow()
+# def getActiveFile():
+#     '''check if your on linux
+#     or windows and returns the active window name'''
+#     if sys.platform in ['linux', 'linux2']:
+#         return CurrentWindow.activeLinuxWindow()
+    # elif sys.platform in ['Windows', 'win32', 'cygwin']:
+    #     return CurrentWindow.activeWindowsWindow()
 
 def checkIfCsvExist():
     ''' checks if the filesArray have today's datetime

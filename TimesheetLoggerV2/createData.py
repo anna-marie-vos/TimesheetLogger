@@ -16,9 +16,9 @@ def activeLinuxWindow():
         if w.get_application() == active_app:
             return active_window.get_name()
 
-def activeWindowsWindow():
-    # http://stackoverflow.com/a/608814/562769
-    import win32gui
-    window = win32gui.GetForegroundWindow()
-    active_window_name = win32gui.GetWindowText(window)
-    return active_window_name
+# def activeWindowsWindow():
+#     # http://stackoverflow.com/a/608814/562769
+#     import win32gui
+#     window = win32gui.GetForegroundWindow()
+#     active_window_name = win32gui.GetWindowText(window)
+#     return active_window_name

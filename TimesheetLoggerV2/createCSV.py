@@ -50,10 +50,3 @@ def checkIfCsvExist():
         return addData()
     else:
         return createCSVFile()
-
-def timeloop():
-    while True:
-        checkIfCsvExist()
-        time.sleep(5)
-
-timeloop()

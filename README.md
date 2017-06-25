@@ -52,4 +52,7 @@ This is an app to log activity on your pc
 
 ## creating exe
 * http://python-guide-pt-br.readthedocs.io/en/latest/shipping/freezing/
-* pyinstaller does not work on windows 8 or windows 10. 
+* pyinstaller does not work on windows 8 or windows 10.
+
+## install tkinter for python 2.7
+* sudo apt-get install python-tk

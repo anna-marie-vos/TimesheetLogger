@@ -56,4 +56,5 @@ This is an app to log activity on your pc
 
 ## install tkinter for python 2.7
 * sudo apt-get install python-tk
+* `pyinstaller --onefile --windowed main.py`
 * `pyinstaller --onedir --name=a_friendly_app_name_here   your_script.py`

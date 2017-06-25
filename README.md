@@ -49,3 +49,7 @@ This is an app to log activity on your pc
 # this worked:
 * https://gist.github.com/nthrnth/f77465b56fb21dbd3698ea493822dab7
 * https://unix.stackexchange.com/questions/159334/focusing-the-current-window-minimizing-all-of-the-others
+
+## creating exe
+* http://python-guide-pt-br.readthedocs.io/en/latest/shipping/freezing/
+* pyinstaller does not work on windows 8 or windows 10. 

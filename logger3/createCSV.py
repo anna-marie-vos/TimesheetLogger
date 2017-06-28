@@ -22,7 +22,7 @@ def getTimeStamp():
 def createCSVFile():
     '''creates a .csv file with
     year-month-date.csv'''
-    with open(filename, 'wb') as csvFile:
+    with open(filename, 'w') as csvFile:
         write = csv.writer(csvFile, delimiter=",")
         write.writerow([getTimeStamp(),CurrentWindow.activeLinuxWindow()])
         csvFile.close()

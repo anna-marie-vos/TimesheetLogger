@@ -49,7 +49,6 @@ class UI:
             self.interval = 5000
         else :
             self.interval = self.timeInput.get()*1000
-            print(self.interval)
 
 
 root = Tk()

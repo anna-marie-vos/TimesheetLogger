@@ -58,3 +58,10 @@ This is an app to log activity on your pc
 * sudo apt-get install python-tk
 * `pyinstaller --onefile --windowed main.py`
 * `pyinstaller --onedir --name=a_friendly_app_name_here   your_script.py`
+
+## installing winpy32 
+# Windows to install win32gui
+* website: https://stackoverflow.com/questions/20113456/installing-win32gui-python-module
+* note - use 36 if you have python 3.6 etc.
+* pip install C:\Users\Amvos\Downloads\pywin32-221-cp36-cp36m-win32.whl
+* C:\Windows\py.exe C:\Users\Amvos\AppData\Local\Programs\Python\Python36-32\Scripts\pywin32_postinstall.py -install

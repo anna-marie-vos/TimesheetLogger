@@ -22,14 +22,14 @@ def getTimeStamp():
 def createCSVFile():
     '''creates a .csv file with
     year-month-date.csv'''
-    with open(filename, 'w+') as csvFile:
+    with open(filename, 'w+', encoding='utf-8') as csvFile:
         write = csv.writer(csvFile, delimiter=",")
         write.writerow([getTimeStamp(),CurrentWindow.activeLinuxWindow()])
         csvFile.close()
 
 def addData():
     '''adds a data line to an existing csv file'''
-    with open(filename, 'a+') as csvFile:
+    with open(filename, 'a+', encoding='utf-8') as csvFile:
         write = csv.writer(csvFile, delimiter=',')
         write.writerows([[getTimeStamp(),CurrentWindow.activeLinuxWindow()]])
         csvFile.close()

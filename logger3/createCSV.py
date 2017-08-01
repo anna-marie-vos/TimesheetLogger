@@ -5,33 +5,47 @@ import os, inspect
 import createData as CurrentWindow
 import sys
 
+
 thisYear = dt.now().year
 thisMonth = dt.now().month
 thisDay = dt.now().day
+startTimeStamp = dt.now().replace(microsecond=0)
+duration = ''
+finishTimeStamp = dt.now().replace(microsecond=0)
 
 filename = str(thisYear)+"-"+str(thisMonth)+"-"+str(thisDay)+".csv"
 
-def getTimeStamp():
+def getTimeStamp(dataType):
     '''getTimeStamp returns the hh:mm:ss'''
     thisHour = dt.now().hour
     thisMinute = dt.now().minute
     thisSeconds = dt.now().second
-    currentTimeInstance = str(thisHour)+":"+str(thisMinute)+":"+str(thisSeconds)
-    return currentTimeInstance
+    startTimeStamp = dt.now().replace(microsecond=0)
+    if dataType is 'string':
+        currentTimeInstance = str(thisHour)+":"+str(thisMinute)+":"+str(thisSeconds)
+        return currentTimeInstance
+    else:
+        return startTimeStamp
+
+def getTimeDuration():
+    timestamp = getTimeStamp('notaString')
+    duration = dt.now().replace(microsecond=0) - timestamp
+    return duration
+
 
 def createCSVFile():
     '''creates a .csv file with
     year-month-date.csv'''
     with open(filename, 'w+', encoding='utf-8') as csvFile:
         write = csv.writer(csvFile, delimiter=",")
-        write.writerow([getTimeStamp(),getActiveFile()])
+        write.writerow([getTimeStamp('string'),getTimeDuration(),getActiveFile()])
         csvFile.close()
 
 def addData():
     '''adds a data line to an existing csv file'''
     with open(filename, 'a+', encoding='utf-8') as csvFile:
         write = csv.writer(csvFile, delimiter=',')
-        write.writerows([[getTimeStamp(),getActiveFile()]])
+        write.writerows([[getTimeStamp('string'),getTimeDuration(),getActiveFile()]])
         csvFile.close()
 
 def getActiveFile():

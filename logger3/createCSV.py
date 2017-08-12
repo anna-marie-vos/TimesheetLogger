@@ -12,57 +12,64 @@ class CreateCSV:
         self.thisYear = dt.now().year
         self.thisMonth = dt.now().month
         self.thisDay = dt.now().day
-        self.startTimeStamp = dt.now().replace(microsecond=0)
+        self.startTime = dt.now().replace(microsecond=0)
+        self.newStartTime = dt.now().replace(microsecond=0)
         self.duration = ''
-        self.finishTimeStamp = dt.now().replace(microsecond=0)
+        self.finishTime = dt.now().replace(microsecond=0)
         self.filename = str(self.thisYear)+"-"+str(self.thisMonth)+"-"+str(self.thisDay)+".csv"
+        self.previousWindow = ''
+        self.currentWindow = ''
 
-
-    def getTimeStamp(self,dataType):
-        '''getTimeStamp returns the hh:mm:ss'''
-        self.thisHour = dt.now().hour
-        self.thisMinute = dt.now().minute
-        self.thisSeconds = dt.now().second
-
-        if dataType is 'string':
-            currentTimeInstance = str(self.thisHour)+":"+str(self.thisMinute)+":"+str(self.thisSeconds)
-            print('getTimeStamp: ', currentTimeInstance)
-            return currentTimeInstance
+    def checkActiveWindow(self):
+        if self.getActiveFile() == self.previousWindow:
+            self.startTime = self.newStartTime
+            self.finishTime = dt.now().replace(microsecond=0)
+            self.duration = self.finishTime - self.startTime
+            print(self.currentWindow,' duration: ',self.duration)
         else:
-            print('startTimeStamp', self.startTimeStamp)
-            return self.startTimeStamp
+            self.newStartTime = dt.now().replace(microsecond=0)
+            print(self.previousWindow,'Start: ',self.startTime,'Finish: ',self.finishTime,
+            'duration',self.duration)
+            self.checkIfCsvExist()
+            self.previousWindow = self.currentWindow
 
-    def getTimeDuration(self):
-        timestamp = self.getTimeStamp('notaString')
-        duration = dt.now().replace(microsecond=0) - timestamp
-        print('getTimeDuration: ',timestamp,'duration', duration)
-        return duration
 
+    def getActiveFile(self):
+        #Step3
+        '''check if your on linux
+        or windows and returns the active window name'''
+        if sys.platform in ['linux', 'linux2']:
+            self.currentWindow = CurrentWindow.activeLinuxWindow()
+            print('getActiveFile', self.currentWindow)
+            return self.currentWindow
+        elif sys.platform in ['Windows', 'win32', 'cygwin']:
+            self.currentWindow = CurrentWindow.activeWindowsWindow()
+            return self.currentWindow
 
     def createCSVFile(self):
+        #Step2a
         '''creates a .csv file with
         year-month-date.csv'''
         with open(self.filename, 'w+', encoding='utf-8') as csvFile:
             write = csv.writer(csvFile, delimiter=",")
-            write.writerow([self.getTimeStamp('string'),self.getTimeDuration(),self.getActiveFile()])
+            write.writerow(['Start Time','Finish Time','Duration','Active Window'])
             csvFile.close()
 
     def addData(self):
+        #Step2b
         '''adds a data line to an existing csv file'''
+        start = str(self.startTime.hour)+':'+str(self.startTime.minute)+':'+str(self.startTime.second)
+        finish = str(self.finishTime.hour)+':'+str(self.finishTime.minute)+':'+str(self.finishTime.second)
+        dur = str(self.duration)
+
         with open(self.filename, 'a+', encoding='utf-8') as csvFile:
             write = csv.writer(csvFile, delimiter=',')
-            write.writerows([[self.getTimeStamp('string'),self.getTimeDuration(),self.getActiveFile()]])
+            write.writerows([[start,finish,dur,self.previousWindow]])
             csvFile.close()
 
-    def getActiveFile(self):
-        '''check if your on linux
-        or windows and returns the active window name'''
-        if sys.platform in ['linux', 'linux2']:
-            return CurrentWindow.activeLinuxWindow()
-        elif sys.platform in ['Windows', 'win32', 'cygwin']:
-            return CurrentWindow.activeWindowsWindow()
 
     def checkIfCsvExist(self):
+        #Step1
         ''' checks if the filesArray have today's datetime
          if it does, then addData otherwise createCSV'''
         filesArray = os.listdir('./')

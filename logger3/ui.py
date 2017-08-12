@@ -23,7 +23,7 @@ class UI:
         unitLabel = Label(window, text="seconds")
         unitLabel.grid(row = 0, column = 2)
 
-        logEntry = Entry(window, textvariable = csv.getTimeStamp('string'))
+        logEntry = Entry(window, textvariable = "csv.getTimeStamp('string')")
         logEntry.grid(row = 1, column = 1)
 
         startBtn = Button(window, text = "Start", width = 12, command=self.start)
@@ -45,7 +45,7 @@ class UI:
         self.timeLoop()
 
     def timeLoop(self):
-        csv.checkIfCsvExist()
+        csv.checkActiveWindow()
         if self.timeit:
             self.window.after(self.interval, self.timeLoop)
 

@@ -1,8 +1,10 @@
 from tkinter import *
-import createCSV as csv
+from createCSV import CreateCSV
 import gi
 gi.require_version('Wnck', '3.0')
 from gi.repository import Gtk as gtk
+
+csv = CreateCSV()
 
 class UI:
     def __init__(self, window):
@@ -12,14 +14,17 @@ class UI:
         self.window.wm_title("Timesheet Logger")
 
         inputLabel = Label(window, text= "Set the time interval:")
-        inputLabel.grid(row = 1, column = 0 )
+        inputLabel.grid(row = 0, column = 0 )
 
         self.timeInput = IntVar()
         timeEntry = Entry(window, textvariable = self.timeInput)
-        timeEntry.grid(row = 1, column = 1)
+        timeEntry.grid(row = 0, column = 1)
 
         unitLabel = Label(window, text="seconds")
-        unitLabel.grid(row = 1, column = 2)
+        unitLabel.grid(row = 0, column = 2)
+
+        logEntry = Entry(window, textvariable = "csv.getTimeStamp('string')")
+        logEntry.grid(row = 1, column = 1)
 
         startBtn = Button(window, text = "Start", width = 12, command=self.start)
         startBtn.grid(row = 2, column = 0)
@@ -40,7 +45,7 @@ class UI:
         self.timeLoop()
 
     def timeLoop(self):
-        csv.checkIfCsvExist()
+        csv.checkActiveWindow()
         if self.timeit:
             self.window.after(self.interval, self.timeLoop)
 

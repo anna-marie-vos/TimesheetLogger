@@ -23,18 +23,19 @@ class CreateCSV:
         self.thisHour = dt.now().hour
         self.thisMinute = dt.now().minute
         self.thisSeconds = dt.now().second
-        self.startTimeStamp = dt.now().replace(microsecond=0)
+
         if dataType is 'string':
             currentTimeInstance = str(self.thisHour)+":"+str(self.thisMinute)+":"+str(self.thisSeconds)
             print('getTimeStamp: ', currentTimeInstance)
             return currentTimeInstance
         else:
+            print('startTimeStamp', self.startTimeStamp)
             return self.startTimeStamp
 
     def getTimeDuration(self):
         timestamp = self.getTimeStamp('notaString')
         duration = dt.now().replace(microsecond=0) - timestamp
-        print('getTimeDuration: ',timestamp, duration)
+        print('getTimeDuration: ',timestamp,'duration', duration)
         return duration
 
 

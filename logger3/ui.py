@@ -23,8 +23,7 @@ class UI:
         unitLabel = Label(window, text="seconds")
         unitLabel.grid(row = 0, column = 2)
 
-
-        logEntry = Entry(window, textvariable = "")
+        logEntry = Entry(window, textvariable = csv.getTimeStamp('string'))
         logEntry.grid(row = 1, column = 1)
 
         startBtn = Button(window, text = "Start", width = 12, command=self.start)

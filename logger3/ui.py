@@ -1,8 +1,10 @@
 from tkinter import *
-import createCSV as csv
+from createCSV import CreateCSV
 import gi
 gi.require_version('Wnck', '3.0')
 from gi.repository import Gtk as gtk
+
+csv = CreateCSV()
 
 class UI:
     def __init__(self, window):
@@ -21,8 +23,8 @@ class UI:
         unitLabel = Label(window, text="seconds")
         unitLabel.grid(row = 0, column = 2)
 
-        
-        logEntry = Entry(window, textvariable = csv.getTimeStamp('notaString'))
+
+        logEntry = Entry(window, textvariable = "")
         logEntry.grid(row = 1, column = 1)
 
         startBtn = Button(window, text = "Start", width = 12, command=self.start)

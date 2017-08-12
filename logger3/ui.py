@@ -18,6 +18,7 @@ class UI:
 
         self.timeInput = IntVar()
         timeEntry = Entry(window, textvariable = self.timeInput)
+        timeEntry.insert(INSERT,6)
         timeEntry.grid(row = 0, column = 1)
 
         unitLabel = Label(window, text="seconds")

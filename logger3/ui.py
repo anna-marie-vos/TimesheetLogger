@@ -17,23 +17,23 @@ class UI:
         inputLabel.grid(row = 0, column = 0 )
 
         self.timeInput = IntVar()
-        timeEntry = Entry(window, textvariable = self.timeInput)
+        timeEntry = Entry(self.window, textvariable = self.timeInput)
         timeEntry.insert(INSERT,6)
         timeEntry.grid(row = 0, column = 1)
 
-        unitLabel = Label(window, text="seconds")
+        unitLabel = Label(self.window, text="seconds")
         unitLabel.grid(row = 0, column = 2)
 
-        logEntry = Entry(window, textvariable = "csv.getTimeStamp('string')")
-        logEntry.grid(row = 1, column = 1)
+        self.logLabel = Label(self.window, text = 'currentWindow')
+        self.logLabel.grid(row = 1, columnspan=3)
 
-        startBtn = Button(window, text = "Start", width = 12, command=self.start)
+        startBtn = Button(self.window, text = "Start", width = 12, command=self.start)
         startBtn.grid(row = 2, column = 0)
 
-        startBtn = Button(window, text = "Pause", width = 12, command=self.quitit)
+        startBtn = Button(self.window, text = "Pause", width = 12, command=self.quitit)
         startBtn.grid(row = 2, column = 1)
 
-        quitBtn = Button(window, text = "Quit", width = 12, command=self.window.destroy)
+        quitBtn = Button(self.window, text = "Quit", width = 12, command=self.window.destroy)
         quitBtn.grid(row = 2, column = 2)
 
     def start(self):
@@ -47,6 +47,8 @@ class UI:
 
     def timeLoop(self):
         csv.checkActiveWindow()
+        self.logLabel['text'] = csv.currentWindow
+
         if self.timeit:
             self.window.after(self.interval, self.timeLoop)
 

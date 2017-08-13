@@ -12,26 +12,27 @@ class CreateCSV:
         self.thisYear = dt.now().year
         self.thisMonth = dt.now().month
         self.thisDay = dt.now().day
+        self.filename = str(self.thisYear)+"-"+str(self.thisMonth)+"-"+str(self.thisDay)+".csv"
+
         self.startTime = dt.now().replace(microsecond=0)
         self.newStartTime = dt.now().replace(microsecond=0)
-        self.duration = ''
         self.finishTime = dt.now().replace(microsecond=0)
-        self.filename = str(self.thisYear)+"-"+str(self.thisMonth)+"-"+str(self.thisDay)+".csv"
+
         self.previousWindow = ''
         self.currentWindow = ''
 
     def checkActiveWindow(self):
-        if self.getActiveFile() == self.previousWindow:
-            self.startTime = self.newStartTime
-            self.finishTime = dt.now().replace(microsecond=0)
-            self.duration = self.finishTime - self.startTime
-            print(self.currentWindow,' duration: ',self.duration)
-        else:
+        self.startTime = self.newStartTime
+        self.finishTime = dt.now().replace(microsecond=0)
+        self.duration = self.finishTime - self.startTime
+
+        if self.getActiveFile() != self.previousWindow:
+            self.checkIfCsvExist()
             self.newStartTime = dt.now().replace(microsecond=0)
             print(self.previousWindow,'Start: ',self.startTime,'Finish: ',self.finishTime,
             'duration',self.duration)
-            self.checkIfCsvExist()
             self.previousWindow = self.currentWindow
+
 
 
     def getActiveFile(self):
@@ -40,7 +41,6 @@ class CreateCSV:
         or windows and returns the active window name'''
         if sys.platform in ['linux', 'linux2']:
             self.currentWindow = CurrentWindow.activeLinuxWindow()
-            print('getActiveFile', self.currentWindow)
             return self.currentWindow
         elif sys.platform in ['Windows', 'win32', 'cygwin']:
             self.currentWindow = CurrentWindow.activeWindowsWindow()

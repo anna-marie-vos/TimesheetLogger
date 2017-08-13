@@ -27,22 +27,29 @@ class UI:
         self.logLabel = Label(self.window, text = 'currentWindow')
         self.logLabel.grid(row = 1, columnspan=3)
 
-        startBtn = Button(self.window, text = "Start", width = 12, command=self.start)
-        startBtn.grid(row = 2, column = 0)
+        self.startBtn = Button(self.window, text = "Start", width = 12, command=self.start)
+        self.startBtn.configure(background='#d3d3d3')
+        self.startBtn.grid(row = 2, column = 0)
 
-        startBtn = Button(self.window, text = "Pause", width = 12, command=self.quitit)
-        startBtn.grid(row = 2, column = 1)
+        self.pauseBtn = Button(self.window, text = "Pause", width = 12, command=self.quitit)
+        self.pauseBtn.configure(background='#d3d3d3')
+        self.pauseBtn.grid(row = 2, column = 1)
 
-        quitBtn = Button(self.window, text = "Quit", width = 12, command=self.window.destroy)
-        quitBtn.grid(row = 2, column = 2)
+        self.quitBtn = Button(self.window, text = "Quit", width = 12, command=self.window.destroy)
+        self.quitBtn.configure(background='#d3d3d3')
+        self.quitBtn.grid(row = 2, column = 2)
 
     def start(self):
         self.timeit=True
+        self.startBtn.configure(background='green')
+        self.pauseBtn.configure(background='#d3d3d3')
         self.getInterval()
         self.timeLoop()
 
     def quitit(self):
         self.timeit=False
+        self.startBtn.configure(background='#d3d3d3')
+        self.pauseBtn.configure(background='orange')
         self.timeLoop()
 
     def timeLoop(self):

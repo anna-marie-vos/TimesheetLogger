@@ -29,8 +29,6 @@ class CreateCSV:
         if self.getActiveFile() != self.previousWindow:
             self.checkIfCsvExist()
             self.newStartTime = dt.now().replace(microsecond=0)
-            print(self.previousWindow,'Start: ',self.startTime,'Finish: ',self.finishTime,
-            'duration',self.duration)
             self.previousWindow = self.currentWindow
 
 

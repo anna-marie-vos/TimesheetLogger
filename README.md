@@ -1,7 +1,7 @@
 # TimesheetLogger
 This is an app to log activity on your pc
 
-## Funtionality
+## Vision - Funtionality
 * This app should work like this:
 * you install it on you pc.
 * it prompts you for a folder location where you want to save the outputs.
@@ -13,6 +13,14 @@ This is an app to log activity on your pc
 * it should save everyday.
 * it should save a new .csv file everyday.
 * the data being stored should look like this: filename; timestamp
+
+## Actual MVP- Funtionality
+* You run the exe file in linux (windows, currently still running a script)
+* It automatically saves the .csv file where the exe file is saved. 
+* it logs the start / finish / duration times. It also logs the active window. 
+* you select the time interval you want to log.
+* press start and it automatically starts logging. 
+* it saves a new csv everyday (if you've stopped it the day before, otherwise it just continues... must fix this)
 
 ### Learning
 * sudo apt-get install python-wnck

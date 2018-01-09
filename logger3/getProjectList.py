@@ -17,7 +17,7 @@ class GetProjectList:
 
     def checkForProject(self):
         with open(self.filename, 'r', encoding='utf-8' ) as csvFile:
-            content = csv.reader(csvFile, delimiter=' ',dialect='excel',quotechar='|')
+            content = csv.reader(csvFile, dialect='excel',quotechar='|')
             for row in content:
                 newRow = []
                 for cell in row:
@@ -27,8 +27,7 @@ class GetProjectList:
     def compareEntry(self, entry):
         splitByBacklash = entry.lower().split('\\')
         for snippet in splitByBacklash:
-            self.compareSnippet(snippet)
-            # print('lincoln hub' in snippet)
-
-    def compareSnippet(self,snippet):
-        print(self.projectRefs)
+            for row in self.projectRefs:
+                for synonym in row:
+                    if str(synonym) in str(snippet) and str(synonym) is not '':
+                        return row[0]

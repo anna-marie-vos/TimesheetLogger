@@ -4,7 +4,10 @@ import csv
 import os, inspect
 import createData as CurrentWindow
 import sys
+import getProjectList as GetProjectList
 
+projects = GetProjectList.GetProjectList()
+projects.checkIFCsvExist()
 
 class CreateCSV:
     """docstring for createCSV."""
@@ -30,7 +33,6 @@ class CreateCSV:
             self.checkIfCsvExist()
             self.newStartTime = dt.now().replace(microsecond=0)
             self.previousWindow = self.currentWindow
-
 
 
     def getActiveFile(self):
@@ -59,7 +61,8 @@ class CreateCSV:
         start = str(self.startTime.hour)+':'+str(self.startTime.minute)+':'+str(self.startTime.second)
         finish = str(self.finishTime.hour)+':'+str(self.finishTime.minute)+':'+str(self.finishTime.second)
         dur = str(self.duration)
-
+        projects.compareEntry(self.previousWindow)
+        
         with open(self.filename, 'a+', encoding='utf-8') as csvFile:
             write = csv.writer(csvFile, delimiter=',')
             write.writerows([[start,finish,dur,self.previousWindow]])

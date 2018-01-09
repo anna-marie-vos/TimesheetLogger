@@ -1,5 +1,7 @@
 # TimesheetLogger
 This is an app to log activity on your pc
+To successfully read project numbers, create a file named: projectsList.csv
+The first column should the be project number and the rest should be project synonyms
 
 ## Vision - Funtionality
 * This app should work like this:
@@ -16,10 +18,10 @@ This is an app to log activity on your pc
 
 ## Actual MVP- Funtionality
 * You run the exe file in linux (windows, currently still running a script)
-* It automatically saves the .csv file where the exe file is saved. 
-* it logs the start / finish / duration times. It also logs the active window. 
+* It automatically saves the .csv file where the exe file is saved.
+* it logs the start / finish / duration times. It also logs the active window.
 * you select the time interval you want to log.
-* press start and it automatically starts logging. 
+* press start and it automatically starts logging.
 * it saves a new csv everyday (if you've stopped it the day before, otherwise it just continues... must fix this)
 
 ### Learning
@@ -66,7 +68,7 @@ This is an app to log activity on your pc
 * `pyinstaller --onefile --windowed main.py`
 * `pyinstaller --onedir --name=a_friendly_app_name_here   your_script.py`
 
-## installing winpy32 
+## installing winpy32
 # Windows to install win32gui
 * website: https://stackoverflow.com/questions/20113456/installing-win32gui-python-module
 * note - use 36 if you have python 3.6 etc.

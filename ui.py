@@ -1,8 +1,8 @@
 from tkinter import *
 from createCSV import CreateCSV
-import gi
-gi.require_version('Wnck', '3.0')
-from gi.repository import Gtk as gtk
+# import gi
+# gi.require_version('Wnck', '3.0')
+# from gi.repository import Gtk as gtk
 
 csv = CreateCSV()
 

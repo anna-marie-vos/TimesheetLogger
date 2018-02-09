@@ -23,6 +23,8 @@ class CreateCSV:
 
         self.previousWindow = ''
         self.currentWindow = ''
+        self.previousEntry =''
+        self.currentEntry =''
 
     def checkActiveWindow(self):
         self.startTime = self.newStartTime
@@ -33,6 +35,11 @@ class CreateCSV:
             self.checkIfCsvExist()
             self.newStartTime = dt.now().replace(microsecond=0)
             self.previousWindow = self.currentWindow
+
+    def checkActiveEntry(self):
+        self.currentEntry = str(projects.compareEntry(self.previousWindow))
+        if self.currentEntry != self.previousEntry and self.currentEntry != "None":
+            self.previousEntry = self.currentEntry
 
 
     def getActiveFile(self):
@@ -45,6 +52,8 @@ class CreateCSV:
         elif sys.platform in ['Windows', 'win32', 'cygwin']:
             self.currentWindow = CurrentWindow.activeWindowsWindow()
             return self.currentWindow
+
+
 
     def createCSVFile(self):
         #Step2a
@@ -61,11 +70,12 @@ class CreateCSV:
         start = str(self.startTime.hour)+':'+str(self.startTime.minute)+':'+str(self.startTime.second)
         finish = str(self.finishTime.hour)+':'+str(self.finishTime.minute)+':'+str(self.finishTime.second)
         dur = str(self.duration)
-        projectNum = str(projects.compareEntry(self.previousWindow))
+
+        self.checkActiveEntry()
 
         with open(self.filename, 'a+', encoding='utf-8') as csvFile:
             write = csv.writer(csvFile, delimiter=',')
-            write.writerows([[start,finish,dur,self.previousWindow,projectNum]])
+            write.writerows([[start,finish,dur,self.previousWindow,self.previousEntry]])
             csvFile.close()
 
 

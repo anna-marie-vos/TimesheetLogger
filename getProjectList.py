@@ -30,4 +30,4 @@ class GetProjectList:
             for row in self.projectRefs:
                 for synonym in row:
                     if str(synonym) in str(snippet) and str(synonym) is not '':
-                        return row[0]
+                        return str(row[0]) 

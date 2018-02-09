@@ -38,8 +38,9 @@ class CreateCSV:
 
     def checkActiveEntry(self):
         self.currentEntry = str(projects.compareEntry(self.previousWindow))
-        if self.currentEntry != self.previousEntry and self.currentEntry is not None:
+        if self.currentEntry != self.previousEntry and self.currentEntry != "None":
             self.previousEntry = self.currentEntry
+
 
     def getActiveFile(self):
         #Step3
